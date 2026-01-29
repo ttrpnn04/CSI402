@@ -18,76 +18,57 @@ public class HomeController : Controller
 
     public IActionResult Assessment()
     {
-        String name = "Kunakorn Khamcharoen",
-        classroom = "05-0904",
-        educationYear = "3",
-        favLanguage = "HTML,CSS,JavaScript";
+        ViewBag.FullName = "Teeraphan Thienpromthong";
+        ViewBag.RoomNumber = "09-904";
+        ViewBag.YearOfStudy = 3;
+        ViewBag.FavLanguage = "C#";
 
-        ViewBag.Name = name;
-        ViewBag.Classroom = classroom;
-        ViewBag.EducationYear = educationYear;
-        ViewBag.FavLanguage = favLanguage;
+        int No1=7,No2=1,No3=3,No4=2,No5=1,No6=4,No7=6,No8=1,No9=9,No10=10,total;
 
-        int W1 = 4, W2 = 9, W3 = 4, W4 = 2, W5 = 4,
-            W6 = 4, W7 = 4, W8 = 4, W9 = 4, W10 = 9;
+        total=No1+No2+No3+No4+No5+No6+No7+No8+No9+No10;
 
-        int totalScore = W1 + W2 + W3 + W4 + W5 + W6 + W7 + W8 + W9 + W10;
-        ViewBag.TotalScore = totalScore;
+        ViewBag.Total = total;
 
-        if (totalScore >= 80)
-        {
-            ViewBag.Grade = "A";
-        }
-        else if (totalScore >= 76)
-        {
-            ViewBag.Grade = "B+";
-        }
-        else if (totalScore >= 70)
-        {
-            ViewBag.Grade = "B";
-        }
-        else if (totalScore >= 66)
-        {
-            ViewBag.Grade = "C+";
-        }
-        else if (totalScore >= 60)
-        {
-            ViewBag.Grade = "C";
-        }
-        else if (totalScore >= 56)
-        {
-            ViewBag.Grade = "D+";
-        }
-        else if (totalScore >= 50)
-        {
-            ViewBag.Grade = "D";
-        }
+        string lowScore = "";
+
+        if (No1 < 5) lowScore += "No1";
+        if (No2 < 5) lowScore += " No2";
+        if (No3 < 5) lowScore += " No3";
+        if (No4 < 5) lowScore += " No4";
+        if (No5 < 5) lowScore += " No5";
+        if (No6 < 5) lowScore += " No6";
+        if (No7 < 5) lowScore += " No7";
+        if (No8 < 5) lowScore += " No8";
+        if (No9 < 5) lowScore += " No9";
+        if (No10 < 5) lowScore += " No10";
+
+        ViewBag.LowScore = lowScore;
+        ViewBag.LowScoreWork = lowScore;
+
+        if (total >= 80)
+        ViewBag.Grade = "A";
+        else if (total >= 76)
+        ViewBag.Grade = "B+";
+        else if (total >= 70)
+        ViewBag.Grade = "B";
+        else if (total >= 66)
+        ViewBag.Grade = "C+";
+        else if (total >= 60)
+        ViewBag.Grade = "C";
+        else if (total >= 50)
+        ViewBag.Grade = "D";
         else
         {
             ViewBag.Grade = "F";
         }
 
-        if (ViewBag.Grade == "F")
-        {
-            // if grade is F, show works score that are less than 5 and show string the work number
-            List<string> lowScores = new List<string>();
+        return View();
+    }
 
-            if (W1 < 5) lowScores.Add("W1 = " + W1);
-            if (W2 < 5) lowScores.Add("W2 = " + W2);
-            if (W3 < 5) lowScores.Add("W3 = " + W3);
-            if (W4 < 5) lowScores.Add("W4 = " + W4);
-            if (W5 < 5) lowScores.Add("W5 = " + W5);
-            if (W6 < 5) lowScores.Add("W6 = " + W6);
-            if (W7 < 5) lowScores.Add("W7 = " + W7);
-            if (W8 < 5) lowScores.Add("W8 = " + W8);
-            if (W9 < 5) lowScores.Add("W9 = " + W9);
-            if (W10 < 5) lowScores.Add("W10 = " + W10);
-            ViewData["LowScores"] = lowScores;
-        }
-        else
-        {
-            ViewData["LowScores"] = null;
-        }
+    [ActionName("User")]
+    public IActionResult UserPage()
+    {
+        ViewData["Title"] = "User - CSI402";
         return View();
     }
 

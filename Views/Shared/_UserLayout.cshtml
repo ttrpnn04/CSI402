@@ -1,0 +1,117 @@
+@{
+    Layout = null;
+    var title = ViewData["Title"] ?? "CSI402";
+}
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@title</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/CSI402.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/user-layout.css" asp-append-version="true" />
+
+    <style>
+        :root{--brand:#0d6efd;--muted:#6c757d}
+        .navbar-brand { color:var(--brand); font-weight:700; font-size:1.25rem }
+        .btn-primary.custom { background: linear-gradient(90deg,#0b5ed7,#3b82f6); border:0 }
+        .card.product-card{ transition:transform .15s ease,box-shadow .15s ease }
+        .card.product-card:hover{ transform:translateY(-6px); box-shadow:0 12px 30px rgba(13,110,253,.12) }
+        footer.site-footer{ background:#f8f9fa }
+        .product-price{ font-weight:700; color:#0d6efd }
+        .hero-cta { text-decoration:none }
+        .search-input { max-width:420px }
+    </style>
+
+</head>
+<body class="d-flex flex-column min-vh-100">
+    <header class="mb-3">
+        <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom">
+            <div class="container">
+                <a class="navbar-brand fw-bold" asp-controller="Home" asp-action="Index">🚲 BikeKid</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#userNavbar"
+                        aria-controls="userNavbar" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="userNavbar">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item"><a class="nav-link" asp-controller="Home" asp-action="Index">หน้าแรก</a></li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="categoryMenu" role="button" data-bs-toggle="dropdown" aria-expanded="false">หมวดหมู่</a>
+                            <ul class="dropdown-menu" aria-labelledby="categoryMenu">
+                                <li><a class="dropdown-item" asp-controller="Products" asp-action="Index" asp-route-age="1-3">อายุ 1-3 ปี</a></li>
+                                <li><a class="dropdown-item" asp-controller="Products" asp-action="Index" asp-route-age="4-6">อายุ 4-6 ปี</a></li>
+                                <li><a class="dropdown-item" asp-controller="Products" asp-action="Index" asp-route-age="7-9">อายุ 7-9 ปี</a></li>
+                                <li><a class="dropdown-item" asp-controller="Products" asp-action="Index" asp-route-type="mtb">ทรงเสือภูเขา</a></li>
+                                <li><a class="dropdown-item" asp-controller="Products" asp-action="Index" asp-route-type="road">ทรงถนน</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item"><a class="nav-link" asp-controller="Home" asp-action="Promotions">โปรโมชั่น</a></li>
+                    </ul>
+
+                    <form class="d-flex me-3" role="search" method="get" asp-controller="Products" asp-action="Index">
+                        <input class="form-control me-2 search-input" type="search" name="q" placeholder="ค้นหาจักรยานหรือรุ่น" aria-label="Search">
+                        <button class="btn btn-outline-secondary" type="submit">ค้นหา</button>
+                    </form>
+
+                    <ul class="navbar-nav align-items-center">
+                        <li class="nav-item me-2"><a class="nav-link" asp-controller="Cart" asp-action="Index">🛒</a></li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="accountMenu" role="button" data-bs-toggle="dropdown" aria-expanded="false">บัญชี</a>
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="accountMenu">
+                                <li><a class="dropdown-item" asp-controller="Account" asp-action="Profile">บัญชีของฉัน</a></li>
+                                <li><a class="dropdown-item" asp-controller="Orders" asp-action="Index">คำสั่งซื้อ</a></li>
+                                <li><hr class="dropdown-divider"/></li>
+                                <li><a class="dropdown-item" asp-controller="Account" asp-action="Logout">ออกจากระบบ</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container mt-4 flex-grow-1">
+        <div class="row">
+            <main class="col-12 main-content">
+                @RenderBody()
+            </main>
+        </div>
+    </div>
+
+
+
+    <!-- Footer -->
+    <footer class="site-footer border-top mt-4">
+        <div class="container py-4">
+            <div class="row">
+                <div class="col-md-4">
+                    <h6>เกี่ยวกับร้าน</h6>
+                    <p class="small mb-0">จำหน่ายจักรยานเด็กคุณภาพ มาตรฐาน ปลอดภัย เหมาะกับวัยของเด็กทุกช่วง</p>
+                </div>
+                <div class="col-md-4">
+                    <h6>ติดต่อเรา</h6>
+                    <p class="mb-0">อีเมล: info@csi402.example</p>
+                    <p class="mb-0">โทร: 02-123-4567</p>
+                </div>
+                <div class="col-md-4 text-md-end">
+                    <h6>ลิงก์ด่วน</h6>
+                    <ul class="list-unstyled mb-0">
+                        <li><a asp-controller="Home" asp-action="Privacy">นโยบายความเป็นส่วนตัว</a></li>
+                        <li><a asp-controller="Home" asp-action="Terms">ข้อกำหนดและเงื่อนไข</a></li>
+                    </ul>
+                    <small class="d-block mt-2">&copy; 2569 CSI402. สงวนลิขสิทธิ์.</small>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

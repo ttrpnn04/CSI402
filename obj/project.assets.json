@@ -8,23 +8,23 @@
     "net10.0": []
   },
   "packageFolders": {
-    "C:\\Users\\ZphinxGz\\.nuget\\packages\\": {},
+    "C:\\Users\\pigeo\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\ZphinxGz\\Desktop\\Au\\GH\\CSI-402\\CSI402.csproj",
+      "projectUniqueName": "C:\\Users\\pigeo\\OneDrive\\Desktop\\CSI402\\CSI402\\CSI402.csproj",
       "projectName": "CSI402",
-      "projectPath": "C:\\Users\\ZphinxGz\\Desktop\\Au\\GH\\CSI-402\\CSI402.csproj",
-      "packagesPath": "C:\\Users\\ZphinxGz\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\ZphinxGz\\Desktop\\Au\\GH\\CSI-402\\obj\\",
+      "projectPath": "C:\\Users\\pigeo\\OneDrive\\Desktop\\CSI402\\CSI402\\CSI402.csproj",
+      "packagesPath": "C:\\Users\\pigeo\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\pigeo\\OneDrive\\Desktop\\CSI402\\CSI402\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\ZphinxGz\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\pigeo\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
