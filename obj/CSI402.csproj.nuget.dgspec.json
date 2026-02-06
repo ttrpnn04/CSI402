@@ -1,31 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "c:\\Users\\pigeo\\OneDrive\\Desktop\\CSI402\\CSI402\\CSI402.csproj": {}
+    "c:\\Users\\Admin\\Documents\\GitHub\\CSI402\\CSI402.csproj": {}
   },
   "projects": {
-    "c:\\Users\\pigeo\\OneDrive\\Desktop\\CSI402\\CSI402\\CSI402.csproj": {
+    "c:\\Users\\Admin\\Documents\\GitHub\\CSI402\\CSI402.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Users\\pigeo\\OneDrive\\Desktop\\CSI402\\CSI402\\CSI402.csproj",
+        "projectUniqueName": "c:\\Users\\Admin\\Documents\\GitHub\\CSI402\\CSI402.csproj",
         "projectName": "CSI402",
-        "projectPath": "c:\\Users\\pigeo\\OneDrive\\Desktop\\CSI402\\CSI402\\CSI402.csproj",
-        "packagesPath": "C:\\Users\\pigeo\\.nuget\\packages\\",
-        "outputPath": "c:\\Users\\pigeo\\OneDrive\\Desktop\\CSI402\\CSI402\\obj\\",
+        "projectPath": "c:\\Users\\Admin\\Documents\\GitHub\\CSI402\\CSI402.csproj",
+        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
+        "outputPath": "c:\\Users\\Admin\\Documents\\GitHub\\CSI402\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\pigeo\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net10.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {

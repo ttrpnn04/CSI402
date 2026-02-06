@@ -1,11 +1,48 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using CSI402.Models;
+using CSI402.ViewModels;
 
 namespace CSI402.Controllers;
 
 public class AccountController : Controller
 {
+    public IActionResult Lab5()
+    {
+        // var User = new LabUserViewModel
+        // {
+        //     UserId = 123456,
+        //     Name = "Teeraphan ",
+        //     LastName = "Thienpromthong",
+        //     Age = 20,
+        //     Address = "123 Main Street",
+        //     Height = 175.5m,
+        //     Weight = 70.0m
+        // };
+        
+        // var user = new List<LabUserViewModel>
+        // {
+        //     new LabUserViewModel {UserId = 123456, Name = "Teeraphan", LastName = "Thienpromthong", Age = 20, Address = "123 Main Street", Height = 175.5m, Weight = 70.0m},
+        //     new LabUserViewModel {UserId = 654321, Name = "John", LastName = "Doe", Age = 25, Address = "456 Elm Street", Height = 180.0m, Weight = 80.0m},
+        //     new LabUserViewModel {UserId = 789012, Name = "Jane", LastName = "Smith", Age = 30, Address = "789 Oak Avenue", Height = 165.0m, Weight = 60.0m},
+        // };
+        // return View(user);
+        return View();
+    }
+    [HttpPost]
+    public IActionResult Lab5(LabUserViewModel data)
+    {
+        string a,b,c;
+        a=data.UserId;
+        b=data.Name;
+        c=data.LastName;
+
+        @ViewBag.UserId = a;
+        @ViewBag.Name = b;
+        @ViewBag.LastName = c;
+
+        return View();
+    }
     public IActionResult Index()
     {
         return View();
