@@ -10,9 +10,9 @@ public class AccountController : Controller
     // Static list to store users (in real app, use database)
     private static List<LabUserViewModel> users = new List<LabUserViewModel>
     {
-        new LabUserViewModel {UserId = "001", Name = "Teeraphan", LastName = "Thienpromthong", Age = 20, Address = "123 Main Street", Height = 175.5m, Weight = 70.0m},
-        new LabUserViewModel {UserId = "002", Name = "John", LastName = "Doe", Age = 25, Address = "456 Elm Street", Height = 180.0m, Weight = 80.0m},
-        new LabUserViewModel {UserId = "003", Name = "Jane", LastName = "Smith", Age = 30, Address = "789 Oak Avenue", Height = 165.0m, Weight = 60.0m},
+        new LabUserViewModel {UserId = "001", Name = "Teeraphan", LastName = "Thienpromthong", Age = 20, Address = "123 Main Street"},
+        new LabUserViewModel {UserId = "002", Name = "John", LastName = "Doe", Age = 25, Address = "456 Elm Street"},
+        new LabUserViewModel {UserId = "003", Name = "Jane", LastName = "Smith", Age = 30, Address = "789 Oak Avenue"},
     };
     public IActionResult Lab5()
     {
@@ -58,26 +58,11 @@ public class AccountController : Controller
     [HttpPost]
     public IActionResult AddUser(LabUserViewModel newUser)
     {
+        users.Add(newUser);
+        TempData["Success"] = "เพิ่มผู้ใช้สำเร็จแล้ว";
+        
         return RedirectToAction("UserList");
     }
-
-    [HttpPost]
-    public IActionResult DeleteUser(string userId)
-    {
-        var user = users.FirstOrDefault(u => u.UserId == userId);
-        if (user != null)
-        {
-            users.Remove(user);
-            TempData["Success"] = "ลบผู้ใช้สำเร็จแล้ว";
-        }
-        else
-        {
-            TempData["Error"] = "ไม่พบผู้ใช้";
-        }
-
-        return RedirectToAction("UserList");
-    }
-
     public IActionResult Index()
     {
         return View();
