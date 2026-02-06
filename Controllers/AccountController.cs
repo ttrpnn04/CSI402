@@ -48,6 +48,59 @@ public class AccountController : Controller
         return View();
     }
 
+    public IActionResult Login()
+    {
+        return View();
+    }
+
+    [HttpPost]
+    public IActionResult Login(string email, string password)
+    {
+        // string a,b;
+        // a=email;
+        // b=password;
+
+       
+            return RedirectToAction("Index", "Home");
+    }
+
+    public IActionResult Register()
+    {
+        return View();
+    }
+
+    [HttpPost]
+    public IActionResult Register(string email, string password, string confirmPassword)
+    {
+        if (string.IsNullOrWhiteSpace(email) || string.IsNullOrWhiteSpace(password) || string.IsNullOrWhiteSpace(confirmPassword))
+        {
+            TempData["Error"] = "กรุณากรอกข้อมูลให้ครบถ้วน";
+            return View();
+        }
+
+        if (password != confirmPassword)
+        {
+            TempData["Error"] = "รหัสผ่านและยืนยันรหัสผ่านไม่ตรงกัน";
+            return View();
+        }
+
+        // Simple duplicate check (placeholder) — replace with real user store
+        if (email == "test@example.com")
+        {
+            TempData["Error"] = "อีเมลนี้มีผู้ใช้แล้ว";
+            return View();
+        }
+
+        // Registration success (in real app: create user, hash password, persist, etc.)
+        TempData["Success"] = "สมัครสมาชิกเรียบร้อยแล้ว กรุณาเข้าสู่ระบบ";
+        return RedirectToAction("Login");
+    }
+
+    public IActionResult ForgotPassword()
+    {
+        return View();
+    }
+
     public IActionResult Privacy()
     {
         return View();
@@ -64,7 +117,7 @@ public class AccountController : Controller
 
     public IActionResult Assessment()
     {
-        String name = "Chonlakorn Bualuang",
+        String name = "Teeraphan Thienpromthong",
         classroom = "05-0904",
         educationYear = "3",
         favLanguage = "HTML,CSS,JavaScript";

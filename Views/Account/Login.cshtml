@@ -1,0 +1,71 @@
+@{
+    Layout = "_UserLayout";
+    ViewData["Title"] = "เข้าสู่ระบบ";
+}
+
+<div class="row justify-content-center">
+    <div class="col-md-6 col-lg-5">
+        <div class="card shadow-lg border-0 mt-5">
+            <div class="card-header bg-primary text-white py-4">
+                <h2 class="mb-0 text-center fw-bold">เข้าสู่ระบบ</h2>
+            </div>
+
+            <div class="card-body p-4">
+                @if (TempData["Error"] != null)
+                {
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        <i class="bi bi-exclamation-circle"></i> @TempData["Error"]
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                }
+
+                @if (TempData["Success"] != null)
+                {
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        <i class="bi bi-check-circle"></i> @TempData["Success"]
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                }
+
+                <form asp-action="Login" asp-controller="Account" method="post">
+                    <div class="mb-3">
+                        <label for="email" class="form-label fw-bold">อีเมล</label>
+                        <input type="email" id="email" name="email" class="form-control form-control-lg" placeholder="your@email.com" required />
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="password" class="form-label fw-bold">รหัสผ่าน</label>
+                        <input type="password" id="password" name="password" class="form-control form-control-lg" placeholder="••••••••" required />
+                    </div>
+
+                    <div class="mb-3 form-check d-flex justify-content-between align-items-center">
+                        <a href="@Url.Action("ForgotPassword", "Account")" class="text-primary text-decoration-none small">ลืมรหัสผ่าน?</a>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-lg w-100 fw-bold">
+                        เข้าสู่ระบบ
+                    </button>
+                </form>
+
+                <hr class="my-4" />
+
+                <div class="text-center">
+                    <p class="mb-0">
+                        ยังไม่มีบัญชี? 
+                        <a href="@Url.Action("Register", "Account")" class="text-primary text-decoration-none fw-bold">
+                            สมัครสมาชิกที่นี่
+                        </a>
+                    </p>
+                </div>
+            </div>
+
+            <div class="card-footer bg-light text-center py-3">
+                <small class="text-muted">
+                    ✓ ยินดีต้อนรับเข้าสู่ <strong>BikeKid</strong> 🚲
+                </small>
+            </div>
+        </div>
+    </div>
+</div>
+
+
