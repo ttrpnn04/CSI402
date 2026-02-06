@@ -1,0 +1,101 @@
+@model List<LabUserViewModel>
+
+@{
+    ViewData["Title"] = "User List";
+}
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-12">
+            <h1>รายชื่อผู้ใช้</h1>
+            <hr />
+            <div class="card mb-4">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0">เพิ่มผู้ใช้ใหม่</h5>
+                </div>
+                <div class="card-body">
+                    <form method="post" action="@Url.Action("AddUser", "Account")">
+                        <div class="row">
+                            <div class="col-md-2 mb-3">
+                                <label for="UserId" class="form-label">รหัสผู้ใช้</label>
+                                <input type="text" class="form-control" id="UserId" name="UserId" required>
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <label for="Name" class="form-label">ชื่อ</label>
+                                <input type="text" class="form-control" id="Name" name="Name" required>
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <label for="LastName" class="form-label">นามสกุล</label>
+                                <input type="text" class="form-control" id="LastName" name="LastName" required>
+                            </div>
+                            <div class="col-md-2 mb-3">
+                                <label for="Age" class="form-label">อายุ</label>
+                                <input type="number" class="form-control" id="Age" name="Age" min="1">
+                            </div>
+                            <div class="col-md-2 mb-3">
+                                <label for="Address" class="form-label">ที่อยู่</label>
+                                <input type="text" class="form-control" id="Address" name="Address">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-2 mb-3">
+                                <label for="Height" class="form-label">ส่วนสูง (ซม.)</label>
+                                <input type="number" step="0.1" class="form-control" id="Height" name="Height" min="0">
+                            </div>
+                            <div class="col-md-2 mb-3">
+                                <label for="Weight" class="form-label">น้ำหนัก (กก.)</label>
+                                <input type="number" step="0.1" class="form-control" id="Weight" name="Weight" min="0">
+                            </div>
+                            <div class="col-md-8 mb-3 d-flex align-items-end">
+                                <button type="submit" class="btn btn-success">เพิ่มผู้ใช้</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-body">
+                    @if (Model?.Any() == true)
+                    {
+                        <div class="table-responsive">
+                            <table class="table table-striped table-hover">
+                                <thead class="table-dark">
+                                    <tr>
+                                        <th style="width: 10%;">รหัส</th>
+                                        <th style="width: 15%;">ชื่อ</th>
+                                        <th style="width: 15%;">นามสกุล</th>
+                                        <th style="width: 8%;">อายุ</th>
+                                        <th style="width: 20%;">ที่อยู่</th>
+                                        <th style="width: 8%;">ส่วนสูง</th>
+                                        <th style="width: 8%;">น้ำหนัก</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var user in Model)
+                                    {
+                                        <tr>
+                                            <td>@user.UserId</td>
+                                            <td>@user.Name</td>
+                                            <td>@user.LastName</td>
+                                            <td>@user.Age</td>
+                                            <td>@user.Address</td>
+                                            <td>@user.Height</td>
+                                            <td>@user.Weight</td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="alert alert-info">
+                            ไม่มีผู้ใช้ในระบบ
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

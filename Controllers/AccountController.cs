@@ -7,6 +7,13 @@ namespace CSI402.Controllers;
 
 public class AccountController : Controller
 {
+    // Static list to store users (in real app, use database)
+    private static List<LabUserViewModel> users = new List<LabUserViewModel>
+    {
+        new LabUserViewModel {UserId = "001", Name = "Teeraphan", LastName = "Thienpromthong", Age = 20, Address = "123 Main Street", Height = 175.5m, Weight = 70.0m},
+        new LabUserViewModel {UserId = "002", Name = "John", LastName = "Doe", Age = 25, Address = "456 Elm Street", Height = 180.0m, Weight = 80.0m},
+        new LabUserViewModel {UserId = "003", Name = "Jane", LastName = "Smith", Age = 30, Address = "789 Oak Avenue", Height = 165.0m, Weight = 60.0m},
+    };
     public IActionResult Lab5()
     {
         // var User = new LabUserViewModel
@@ -32,10 +39,10 @@ public class AccountController : Controller
     [HttpPost]
     public IActionResult Lab5(LabUserViewModel data)
     {
-        string a,b,c;
-        a=data.UserId;
-        b=data.Name;
-        c=data.LastName;
+        string? a, b, c;
+        a = data.UserId ?? "";
+        b = data.Name ?? "";
+        c = data.LastName ?? "";
 
         @ViewBag.UserId = a;
         @ViewBag.Name = b;
@@ -43,6 +50,34 @@ public class AccountController : Controller
 
         return View();
     }
+    public IActionResult UserList()
+    {
+        return View(users);
+    }
+
+    [HttpPost]
+    public IActionResult AddUser(LabUserViewModel newUser)
+    {
+        return RedirectToAction("UserList");
+    }
+
+    [HttpPost]
+    public IActionResult DeleteUser(string userId)
+    {
+        var user = users.FirstOrDefault(u => u.UserId == userId);
+        if (user != null)
+        {
+            users.Remove(user);
+            TempData["Success"] = "ลบผู้ใช้สำเร็จแล้ว";
+        }
+        else
+        {
+            TempData["Error"] = "ไม่พบผู้ใช้";
+        }
+
+        return RedirectToAction("UserList");
+    }
+
     public IActionResult Index()
     {
         return View();
@@ -84,14 +119,12 @@ public class AccountController : Controller
             return View();
         }
 
-        // Simple duplicate check (placeholder) — replace with real user store
         if (email == "test@example.com")
         {
             TempData["Error"] = "อีเมลนี้มีผู้ใช้แล้ว";
             return View();
         }
 
-        // Registration success (in real app: create user, hash password, persist, etc.)
         TempData["Success"] = "สมัครสมาชิกเรียบร้อยแล้ว กรุณาเข้าสู่ระบบ";
         return RedirectToAction("Login");
     }
