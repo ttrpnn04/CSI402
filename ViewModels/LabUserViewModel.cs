@@ -10,4 +10,10 @@ namespace CSI402.ViewModels
         public string? Email { get; set; }
         public string? Password { get; set; }
     }
+
+    public class LoginRecord
+    {
+        public string? Email { get; set; }
+        public DateTime LoginTime { get; set; }
+    }
 }

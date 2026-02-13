@@ -14,6 +14,9 @@ public class AccountController : Controller
         new LabUserViewModel {UserId = "002", Name = "John", LastName = "Doe", Age = 25, Address = "456 Elm Street"},
         new LabUserViewModel {UserId = "003", Name = "Jane", LastName = "Smith", Age = 30, Address = "789 Oak Avenue"},
     };
+
+    // Static list to store login records
+    private static List<LoginRecord> loginRecords = new List<LoginRecord>();
     public IActionResult Lab5()
     {
         // var User = new LabUserViewModel
@@ -54,6 +57,7 @@ public class AccountController : Controller
     }
     public IActionResult UserList()
     {
+        ViewBag.LoginRecords = loginRecords;
         return View(users);
     }
 
@@ -85,6 +89,12 @@ public class AccountController : Controller
         @ViewBag.Email = a;
         @ViewBag.Password = b;
         
+        // Add login record
+        loginRecords.Add(new LoginRecord 
+        { 
+            Email = a, 
+            LoginTime = DateTime.Now 
+        });
 
         return RedirectToAction("UserList");
     }
