@@ -44,9 +44,11 @@ public class AccountController : Controller
         b = data.Name ?? "";
         c = data.LastName ?? "";
 
+
         @ViewBag.UserId = a;
         @ViewBag.Name = b;
         @ViewBag.LastName = c;
+  
 
         return View();
     }
@@ -60,7 +62,7 @@ public class AccountController : Controller
     {
         users.Add(newUser);
         TempData["Success"] = "เพิ่มผู้ใช้สำเร็จแล้ว";
-        
+            
         return RedirectToAction("UserList");
     }
     public IActionResult Index()
@@ -74,14 +76,17 @@ public class AccountController : Controller
     }
 
     [HttpPost]
-    public IActionResult Login(string email, string password)
-    {
-        // string a,b;
-        // a=email;
-        // b=password;
+    public IActionResult Login(LabUserViewModel data)
+    {  
+        string? a, b;
+        a = data.Email ?? "";
+        b = data.Password ?? "";
 
-       
-            return RedirectToAction("Index", "Home");
+        @ViewBag.Email = a;
+        @ViewBag.Password = b;
+        
+
+        return RedirectToAction("UserList");
     }
 
     public IActionResult Register()

@@ -41,6 +41,8 @@
         UserId: <input type="text" asp-for="UserId" class="form-control" placeholder="ID"/><br />
         Name: <input type="text" asp-for="Name" class="form-control" placeholder="Name"/><br />    
         LastName: <input type="text" asp-for="LastName" class="form-control" placeholder="Last Name"/><br />
+        Age: <input type="number" asp-for="Age" class="form-control" placeholder="Age"/><br />
+
 
         <button type="submit" class="btn btn-success">Submit</button>
     </form>
@@ -48,5 +50,6 @@
         @ViewBag.UserId
         @ViewBag.Name
         @ViewBag.LastName
+
     </div>
 </div>
