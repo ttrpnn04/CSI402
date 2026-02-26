@@ -1,29 +1,48 @@
-@{Layout = "_UserLayout";}
-<div>
-    <h1>UserList</h1>
-    <div>
-        <table class="table-bordered table mt-3">
-            <thead class="table-dark">
-                <tr>
-                    <th>Username</th>
-                    <th>Lastname</th>
-                    <th>Age</th>
-                    <th>Email</th>
-                    <th>Tel</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var user in ViewBag.Users)
-                {
-                    <tr>
-                        <td>@user.Username</td>
-                        <td>@user.LastName</td>
-                        <td>@user.Age</td>
-                        <td>@user.Email</td>
-                        <td>@user.Tel</td>
-                    </tr>
-                }
-            </tbody>
-        </table>
+@{ Layout = "_UserLayout"; }
+
+<div class="container py-4">
+    <div class="userlist-header text-center">
+        <h2 class="mb-0">รายชื่อผู้ใช้งาน</h2>
+        <small class="text-white-50">รายการผู้ใช้ทั้งหมด</small>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <div class="card shadow-sm userlist-card">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center mb-3 userlist-toolbar">
+                        <div>
+                            <a asp-controller="Project" asp-action="AddUser" class="btn btn-sm btn-primary me-2">เพิ่มผู้ใช้</a>
+                        </div>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table table-striped table-hover userlist-table mb-0">
+                            <thead>
+                                <tr>
+                                    <th>Username</th>
+                                    <th>Name</th>
+                                    <th>Lastname</th>
+                                    <th>Age</th>
+                                    <th>Tel</th>
+                                    <th>Email</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var user in ViewBag.Users)
+                                {
+                                    <tr>
+                                        <td>@user.Username</td>
+                                        <td>@user.Lastname</td>
+                                        <td>@user.Age</td>
+                                        <td>@user.Email</td>
+                                        <td>@user.Tel</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>

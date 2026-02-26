@@ -45,14 +45,19 @@ public class ProjectController : Controller
     {
         var Users = new List<ProjectUserViewModel>
         {
-          new ProjectUserViewModel { Username = "Teeraphan", LastName = "Thienpromthong", Age = 20, Email = "teeraphan@example.com", Tel = 0812345678 },
-          new ProjectUserViewModel { Username = "John", LastName = "Doe", Age = 25, Email = "john.doe@example.com", Tel = 0898765432 },
-          new ProjectUserViewModel { Username = "Jane", LastName = "Smith", Age = 30, Email = "jane.smith@example.com", Tel = 0876543210 },
-          new ProjectUserViewModel { Username = "Alice", LastName = "Johnson", Age = 22, Email = "alice.johnson@example.com", Tel = 0855555555 },
-          new ProjectUserViewModel { Username = "Bob", LastName = "Brown", Age = 28, Email = "bob.brown@example.com", Tel = 0844444444 }
+          new ProjectUserViewModel { Username = "Teeraphan", Lastname = "Thienpromthong", Age = 20, Email = "teeraphan@example.com", Tel = 0812345678 },
+          new ProjectUserViewModel { Username = "John", Lastname = "Doe", Age = 25, Email = "john.doe@example.com", Tel = 0898765432 },
+          new ProjectUserViewModel { Username = "Jane", Lastname = "Smith", Age = 30, Email = "jane.smith@example.com", Tel = 0876543210 },
+          new ProjectUserViewModel { Username = "Alice", Lastname = "Johnson", Age = 22, Email = "alice.johnson@example.com", Tel = 0855555555 },
+          new ProjectUserViewModel { Username = "Bob", Lastname = "Brown", Age = 28, Email = "bob.brown@example.com", Tel = 0844444444 }
         };
         ViewBag.Users = Users;
         return View(ViewBag.Users);
     }
+
+        public IActionResult AddUser()
+        {
+            return View(new ProjectUserViewModel());
+        }
 }
     

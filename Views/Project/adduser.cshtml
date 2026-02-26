@@ -1,13 +1,11 @@
-@{
-    Layout = "_UserLayout";
-}
+@{Layout = "_UserLayout";}
 
 <div class="container py-4">
     <div class="row justify-content-center">
         <div class="col-12 col-md-8 col-lg-6">
             <div class="card shadow-sm">
                 <div class="card-header bg-primary text-white text-center mb-3">
-                    <h2 class="mb-0">สมัครสมาชิก</h2>
+                    <h2 class="mb-0">เพิ่มผู้ใช้ใหม่</h2>
                 </div>
                 <div class="card-body">
                     <form method="post">
@@ -26,7 +24,6 @@
                                 <input type="text" class="form-control" id="lastname" name="Lastname">
                             </div>
                         </div>
-
                         <div class="row">
                             <div class="col-6 mb-3">
                                 <label for="age" class="form-label">อายุ</label>
@@ -37,25 +34,15 @@
                                 <input type="tel" class="form-control" id="tel" name="Tel" placeholder="08x-xxx-xxxx">
                             </div>
                         </div>
-
-
-                        <div class="mb-3">
-                            <label for="email" class="form-label">อีเมล</label>
+                        <div><label for="email" class="form-label">อีเมล</label>
                             <input type="email" class="form-control" id="email" name="Email">
                         </div>
-
-                        <div class="mb-3">
-                            <label for="password" class="form-label">รหัสผ่าน</label>
+                        <div><label for="password" class="form-label">รหัสผ่าน</label>
                             <input type="password" class="form-control" id="password" name="Password">
                         </div>
-
-                        <div class="mb-4">
-                            <label for="confirmPassword" class="form-label">ยืนยันรหัสผ่าน</label>
-                            <input type="password" class="form-control" id="confirmPassword" name="ConfirmPassword">
-                        </div>
-
-                        <div class="d-grid">
-                            <button type="submit" class="btn btn-primary">ลงทะเบียน</button>
+                        <div class="d-flex justify-content-end mt-4">
+                            <a asp-controller="Project" asp-action="UserList" class="btn btn-secondary me-2">ยกเลิก</a>
+                            <button type="submit" class="btn btn-primary">เพิ่มผู้ใช้</button>
                         </div>
                     </form>
                 </div>
