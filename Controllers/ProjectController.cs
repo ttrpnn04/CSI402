@@ -25,7 +25,7 @@ public class ProjectController : Controller
     {
         LoginUsers.Add(model);
 
-        return View(new ProjectUserViewModel());
+        return RedirectToAction("Index");
     }
 
     public IActionResult Register()
