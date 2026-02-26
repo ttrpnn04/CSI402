@@ -1,0 +1,51 @@
+@{Layout = "_UserLayout";}
+<div>
+    <h1>
+        Project Page
+    </h1>
+    <div>
+        <table class ="table-bordered table mt-3">
+            <thead class="table-dark">
+                <tr>
+                    <th>
+                        Username
+                    </th>
+                    <th>
+                        Password
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+            @foreach (var loginUser in ViewBag.LoginUsers)
+            { <tr>
+            <td>@loginUser.Username</td>
+            <td>@loginUser.Password</td>
+            </tr>
+            }
+            </tbody>
+        </table>
+    </div>
+    <div>
+        <table class="table-bordered table mt-3">
+            <thead class="table-dark">
+                <tr>
+                    <th>
+                        Username
+                    </th>
+                    <th>
+                        Password
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var registerUser in ViewBag.RegisterUsers)
+                {
+                    <tr>
+                        <td>@registerUser.Username</td>
+                        <td>@registerUser.Password</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

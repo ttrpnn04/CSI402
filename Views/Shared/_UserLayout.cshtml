@@ -38,7 +38,7 @@
 
                 <div class="collapse navbar-collapse" id="userNavbar">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item"><a class="nav-link" asp-controller="Home" asp-action="Index">หน้าแรก</a></li>
+                        <li class="nav-item"><a class="nav-link" asp-controller="Project" asp-action="Index">หน้าแรก</a></li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="categoryMenu" role="button" data-bs-toggle="dropdown" aria-expanded="false">หมวดหมู่</a>
                             <ul class="dropdown-menu" aria-labelledby="categoryMenu">
@@ -50,6 +50,7 @@
                             </ul>
                         </li>
                         <li class="nav-item"><a class="nav-link" asp-controller="Home" asp-action="Promotions">โปรโมชั่น</a></li>
+                        <li class="nav-item"><a class="nav-link" asp-controller="Project" asp-action="UserList">Userlist</a></li>
                     </ul>
 
                     <form class="d-flex me-3" role="search" method="get" asp-controller="Products" asp-action="Index">
@@ -67,7 +68,10 @@
                                 <li><hr class="dropdown-divider"/></li>
                                 <li><a class="dropdown-item" asp-controller="Account" asp-action="Logout">ออกจากระบบ</a></li>
                             </ul>
+                            
                         </li>
+                        <li><a asp-controller="Project" asp-action="Login">เข้าสู่ระบบ</a></li>
+                        <li><a asp-controller="Project" asp-action="Register">สมัครสมาชิก</a></li>
                     </ul>
                 </div>
             </div>

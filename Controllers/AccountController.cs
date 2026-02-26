@@ -55,84 +55,13 @@ public class AccountController : Controller
 
         return View();
     }
-    public IActionResult UserList()
-    {
-        ViewBag.LoginRecords = loginRecords;
-        return View(users);
-    }
-
-    [HttpPost]
-    public IActionResult AddUser(LabUserViewModel newUser)
-    {
-        users.Add(newUser);
-        TempData["Success"] = "เพิ่มผู้ใช้สำเร็จแล้ว";
-            
-        return RedirectToAction("UserList");
-    }
+    
     public IActionResult Index()
     {
         return View();
     }
 
-    public IActionResult Login()
-    {
-        return View();
-    }
-
-    [HttpPost]
-    public IActionResult Login(LabUserViewModel data)
-    {  
-        string? a, b;
-        a = data.Email ?? "";
-        b = data.Password ?? "";
-
-        @ViewBag.Email = a;
-        @ViewBag.Password = b;
-        
-        // Add login record
-        loginRecords.Add(new LoginRecord 
-        { 
-            Email = a, 
-            LoginTime = DateTime.Now 
-        });
-
-        return RedirectToAction("UserList");
-    }
-
-    public IActionResult Register()
-    {
-        return View();
-    }
-
-    [HttpPost]
-    public IActionResult Register(string email, string password, string confirmPassword)
-    {
-        if (string.IsNullOrWhiteSpace(email) || string.IsNullOrWhiteSpace(password) || string.IsNullOrWhiteSpace(confirmPassword))
-        {
-            TempData["Error"] = "กรุณากรอกข้อมูลให้ครบถ้วน";
-            return View();
-        }
-
-        if (password != confirmPassword)
-        {
-            TempData["Error"] = "รหัสผ่านและยืนยันรหัสผ่านไม่ตรงกัน";
-            return View();
-        }
-
-        if (email == "test@example.com")
-        {
-            TempData["Error"] = "อีเมลนี้มีผู้ใช้แล้ว";
-            return View();
-        }
-
-        TempData["Success"] = "สมัครสมาชิกเรียบร้อยแล้ว กรุณาเข้าสู่ระบบ";
-        return RedirectToAction("Login");
-    }
-
-    public IActionResult ForgotPassword()
-    {
-        return View();
-    }
+    
 
     public IActionResult Privacy()
     {

@@ -388,7 +388,6 @@ c:\Users\pigeo\OneDrive\Desktop\CSI402\CSI402\obj\Debug\net10.0\CSI402.pdb
 c:\Users\pigeo\OneDrive\Desktop\CSI402\CSI402\obj\Debug\net10.0\CSI402.genruntimeconfig.cache
 c:\Users\pigeo\OneDrive\Desktop\CSI402\CSI402\obj\Debug\net10.0\ref\CSI402.dll
 c:\Users\pigeo\OneDrive\Desktop\CSI402\CSI402\obj\Debug\net10.0\compressed\ot0swb3259-{0}-lugek5hnai-lugek5hnai.gz
-c:\Users\pigeo\OneDrive\Desktop\CSI402\CSI402\obj\Debug\net10.0\compressed\ioopkbhyd0-{0}-sosz2a3afm-sosz2a3afm.gz
 c:\Users\Admin\Documents\GitHub\CSI402\bin\Debug\net10.0\appsettings.Development.json
 c:\Users\Admin\Documents\GitHub\CSI402\bin\Debug\net10.0\appsettings.json
 c:\Users\Admin\Documents\GitHub\CSI402\bin\Debug\net10.0\CSI402.staticwebassets.runtime.json
@@ -488,3 +487,4 @@ c:\Users\Admin\Documents\GitHub\CSI402\obj\Debug\net10.0\refint\CSI402.dll
 c:\Users\Admin\Documents\GitHub\CSI402\obj\Debug\net10.0\CSI402.pdb
 c:\Users\Admin\Documents\GitHub\CSI402\obj\Debug\net10.0\CSI402.genruntimeconfig.cache
 c:\Users\Admin\Documents\GitHub\CSI402\obj\Debug\net10.0\ref\CSI402.dll
+c:\Users\pigeo\OneDrive\Desktop\CSI402\CSI402\obj\Debug\net10.0\compressed\ioopkbhyd0-{0}-ohctzkoe75-ohctzkoe75.gz
