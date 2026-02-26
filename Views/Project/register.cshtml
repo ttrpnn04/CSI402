@@ -1,19 +1,61 @@
 @{
     Layout = "_UserLayout";
 }
-<div>
-    <h1>
-        Register Page
-    </h1>
-    <form method="post">
-        <div>
-            <label for="Register">Register</label>
-            <input type="text" class="form-control" id="username" name="Username">
+<style>
+    .card-header { font-weight: 600; text-align: center; }
+</style>
+<div class="container py-4">
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-8 col-lg-6">
+            <div class="card shadow-sm">
+                <div class="card-header bg-primary text-white">
+                    <h2 class="mb-0">สมัครสมาชิก</h2>
+                </div>
+                <div class="card-body">
+                    <form method="post">
+                        <div class="mb-3">
+                            <label for="username" class="form-label">ชื่อผู้ใช้ (Username)</label>
+                            <input type="text" class="form-control" id="username" name="Username" placeholder="เช่น user123">
+                        </div>
+
+                        <div class="row">
+                            <div class="col-12 col-md-6 mb-3">
+                                <label for="name" class="form-label">ชื่อ</label>
+                                <input type="text" class="form-control" id="name" name="Name">
+                            </div>
+                            <div class="col-12 col-md-6 mb-3">
+                                <label for="lastname" class="form-label">นามสกุล</label>
+                                <input type="text" class="form-control" id="lastname" name="Lastname">
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-6 mb-3">
+                                <label for="age" class="form-label">อายุ</label>
+                                <input type="number" class="form-control" id="age" name="Age" min="0">
+                            </div>
+                            <div class="col-6 mb-3">
+                                <label for="tel" class="form-label">โทรศัพท์</label>
+                                <input type="tel" class="form-control" id="tel" name="Tel" placeholder="08x-xxx-xxxx">
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="password" class="form-label">รหัสผ่าน</label>
+                            <input type="password" class="form-control" id="password" name="Password">
+                        </div>
+
+                        <div class="mb-4">
+                            <label for="confirmPassword" class="form-label">ยืนยันรหัสผ่าน</label>
+                            <input type="password" class="form-control" id="confirmPassword" name="ConfirmPassword">
+                        </div>
+
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-primary">ลงทะเบียน</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
-        <div>
-            <label for="Password">Password</label>
-            <input type="password" class="form-control" id="password" name="Password">
-        </div>
-        <button type="submit" class="btn btn-primary">Register</button>
-    </form>
+    </div>
 </div>
