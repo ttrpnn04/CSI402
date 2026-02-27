@@ -1,0 +1,28 @@
+@model IEnumerable<CSI402.Models.Db.LabStudent>
+
+@using CSI402.Models.Db;
+
+@{Layout = "_Layout";}
+
+<div>
+    <table class="table table-bordered">
+        <thead class="table table-dark">
+            <tr>
+                <th>StdId</th>
+                <th>Password</th>
+                <th>Name</th>
+                <th>Lastname</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.StdId</td>
+                    <td>@item.StdPassword</td>
+                    <td>@item.StdName</td>
+                    <td>@item.StdLastname</td>
+                </tr>
+            }
+    </table>
+</div>

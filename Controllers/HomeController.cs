@@ -1,11 +1,24 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using CSI402.Models;
+using CSI402.Models.Db;
 
 namespace CSI402.Controllers;
 
 public class HomeController : Controller
 {
+    private readonly Csi402dbContext _db;
+
+    public HomeController(Csi402dbContext db)
+    {
+        _db = db;
+    }
+    public IActionResult Lab08()
+    {
+        var user = (from u in _db.LabStudents select u).ToList();
+
+        return View(user);
+    }
     public IActionResult Index()
     {
         return View();
