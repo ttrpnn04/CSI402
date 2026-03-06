@@ -1,4 +1,6 @@
 @{ Layout = "_UserLayout"; }
+@using CSI402.Models.Db>
+@model IEnumerable<User>
 
 <div class="container py-4">
     <div class="userlist-header text-center">
@@ -28,15 +30,16 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach (var user in ViewBag.Users)
+                                @foreach (var u in Model)
                                 {
                                     <tr>
-                                        <td>@user.Username</td>
-                                        <td>@user.Name</td>
-                                        <td>@user.Lastname</td>
-                                        <td>@user.Age</td>
-                                        <td>@user.Tel</td>
-                                        <td>@user.Email</td>
+                                        <td>@u.UserId</td>
+                                        <td>@u.FullName</td>
+                                        <td>@u.Email</td>
+                                        <td>@u.Password</td>
+                                        <td>@u.Phone</td>
+                                        <td>@u.Address</td>
+                                        <td>@u.Role</td>
                                     </tr>
                                 }
                             </tbody>

@@ -2,6 +2,7 @@ using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using CSI402.Models;
 using CSI402.Models.Db;
+using CSI402.ViewModels;
 
 namespace CSI402.Controllers;
 
@@ -22,6 +23,30 @@ public class HomeController : Controller
     public IActionResult Index()
     {
         return View();
+    }
+
+    public IActionResult Lab9()
+    {
+        return View();
+    }
+
+    [HttpPost]
+    
+    public IActionResult Lab9(Lab9Users data)
+    {
+        var u = new LabStudent();
+        u.StdId = data.UserId;
+        u.StdName = data.Name;
+        u.StdLastname = data.Lastname;
+        u.StdPassword = data.Password;
+        _db.Add(u);
+        _db.SaveChanges();
+        return RedirectToAction("Lab9List","Home");
+    }
+    public IActionResult Lab9List()
+    {
+        var user = (from u in _db.LabStudents select u).ToList();
+        return View(user);
     }
 
     public IActionResult Privacy()

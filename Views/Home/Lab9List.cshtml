@@ -1,0 +1,24 @@
+@using CSI402.Models.Db>
+@model IEnumerable<LabStudent>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>UserID</th>
+            <th>Password</th>
+            <th>Name</th>
+            <th>Last Name</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.StdId</td>
+                <td>@item.StdPassword</td>
+                <td>@item.StdName</td>
+                <td>@item.StdLastname</td>
+            </tr>
+        }
+    </tbody>
+</table>

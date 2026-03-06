@@ -1,16 +1,22 @@
 using Microsoft.AspNetCore.Mvc;
 using CSI402.ViewModels;
+using CSI402.Models.Db;
 
 namespace CSI402.Controllers;
 
 public class ProjectController : Controller
 {
     public static List<ProjectUserViewModel> LoginUsers = new();
-    public static List<ProjectUserViewModel> RegisterUsers = new();
+    private readonly Csi402dbContext _db;
+
+    public ProjectController(Csi402dbContext db)
+    {
+        _db = db;
+    }
     public IActionResult Index()
     {
-        ViewBag.LoginUsers = LoginUsers;
-        ViewBag.RegisterUsers = RegisterUsers;
+        // ViewBag.LoginUsers = LoginUsers;
+        // ViewBag.RegisterUsers = RegisterUsers;
         return View();
     }
 
@@ -35,24 +41,27 @@ public class ProjectController : Controller
 
     [HttpPost]
 
-    public IActionResult Register(ProjectUserViewModel model)
+    public IActionResult Register(ProjectUserViewModel data)
     {
-        RegisterUsers.Add(model);
-        return RedirectToAction("Index");
+        var u = new User
+        {
+            UserId = data.UserId,
+            FullName = data.FullName,
+            Email = data.Email,
+            Password = data.Password,
+            Phone = data.Phone,
+            Address = data.Address,
+            Role = data.Role
+        };
+        _db.Add(u);
+        _db.SaveChanges();
+         return RedirectToAction("UserList", "Home");
     }
 
     public IActionResult UserList()
     {
-        var Users = new List<ProjectUserViewModel>
-        {
-          new ProjectUserViewModel { Username = "Teeraphan", Name = "Teeraphan", Lastname = "Thienpromthong", Age = 20, Email = "teeraphan@example.com", Tel = "0812345678"},
-          new ProjectUserViewModel { Username = "John", Name = "John", Lastname = "Doe", Age = 25, Email = "john.doe@example.com", Tel = "0898765432"},
-          new ProjectUserViewModel { Username = "Jane", Name = "Jane", Lastname = "Smith", Age = 30, Email = "jane.smith@example.com", Tel = "0876543210"},
-          new ProjectUserViewModel { Username = "Alice", Name = "Alice", Lastname = "Johnson", Age = 22, Email = "alice.johnson@example.com", Tel = "0855555555"},
-          new ProjectUserViewModel { Username = "Bob", Name = "Bob", Lastname = "Brown", Age = 28, Email = "bob.brown@example.com", Tel = "0844444444"}
-        };
-        ViewBag.Users = Users;
-        return View(ViewBag.Users);
+        var user = (from u in _db.Users select u).ToList();
+        return View(user);
     }
 
         public IActionResult AddUser()
