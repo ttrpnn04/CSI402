@@ -6,7 +6,6 @@ namespace CSI402.Controllers;
 
 public class ProjectController : Controller
 {
-    public static List<ProjectUserViewModel> LoginUsers = new();
     private readonly Csi402dbContext _db;
 
     public ProjectController(Csi402dbContext db)
@@ -29,30 +28,26 @@ public class ProjectController : Controller
 
     public IActionResult Login(ProjectUserViewModel model)
     {
-        LoginUsers.Add(model);
 
         return RedirectToAction("Index");
     }
 
     public IActionResult Register()
     {
-        return View(new ProjectUserViewModel());
+        return View();
     }
 
     [HttpPost]
 
     public IActionResult Register(ProjectUserViewModel data)
     {
-        var u = new User
-        {
-            UserId = data.UserId,
-            FullName = data.FullName,
-            Email = data.Email,
-            Password = data.Password,
-            Phone = data.Phone,
-            Address = data.Address,
-            Role = data.Role
-        };
+        var u = new User();
+        u.UserId = data.UserId;
+        u.FullName = data.FullName;
+        u.Email = data.Email;
+        u.Password = data.Password;
+        u.Phone = data.Phone;
+        u.Address = data.Address;
         _db.Add(u);
         _db.SaveChanges();
          return RedirectToAction("UserList", "Home");

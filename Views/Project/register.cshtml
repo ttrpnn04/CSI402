@@ -11,39 +11,49 @@
                     <h2 class="mb-0">สมัครสมาชิก</h2>
                 </div>
                 <div class="card-body">
-                    <form method="post">
+                    <form asp-for="User" asp-controller="Project" asp-action="Register" method="post">
+                        <div class="row">
+                            <div class="col-12 mb-3">
+                                <label for="username" class="form-label">ชื่อผู้ใช้</label>
+                                <input type="text" class="form-control" asp-for="UserId" placeholder="กรอกชื่อผู้ใช้">
+                            </div>
+                        </div>
                         <div class="row">
                             <div class="col-12 col-md-6 mb-3">
                                 <label for="name" class="form-label">ชื่อ</label>
-                                <input type="text" class="form-control" id="name" name="Name">
+                                <input type="text" class="form-control" asp-for="Name">
                             </div>
                             <div class="col-12 col-md-6 mb-3">
                                 <label for="lastname" class="form-label">นามสกุล</label>
-                                <input type="text" class="form-control" id="lastname" name="Lastname">
+                                <input type="text" class="form-control" asp-for="Lastname">
                             </div>
                         </div>
 
                         <div class="row">
                             <div class="col-6 mb-3">
                                 <label for="tel" class="form-label">โทรศัพท์</label>
-                                <input type="tel" class="form-control" id="tel" name="Tel" placeholder="08x-xxx-xxxx">
+                                <input type="tel" class="form-control" asp-for="Phone" placeholder="08x-xxx-xxxx">
                             </div>
                         </div>
 
 
                         <div class="mb-3">
                             <label for="email" class="form-label">อีเมล</label>
-                            <input type="email" class="form-control" id="email" name="Email">
+                            <input type="email" class="form-control" asp-for="Email">
+                        </div>
+                        <div class="mb-3">
+                            <label for="address" class="form-label">ที่อยู่</label>
+                            <input type="text" class="form-control" asp-for="Address">
                         </div>
 
                         <div class="mb-3">
                             <label for="password" class="form-label">รหัสผ่าน</label>
-                            <input type="password" class="form-control" id="password" name="Password">
+                            <input type="password" class="form-control" asp-for="Password">
                         </div>
 
                         <div class="mb-4">
                             <label for="confirmPassword" class="form-label">ยืนยันรหัสผ่าน</label>
-                            <input type="password" class="form-control" id="confirmPassword" name="ConfirmPassword">
+                            <input type="password" class="form-control" asp-for="ConfirmPassword">
                         </div>
 
                         <div class="d-grid">
