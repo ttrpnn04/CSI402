@@ -42,15 +42,16 @@ public class ProjectController : Controller
     public IActionResult Register(ProjectUserViewModel data)
     {
         var u = new User();
-        u.UserId = data.UserId;
-        u.FullName = data.FullName;
+        u.UserName = data.UserName;
+        u.Fullname = data.Fullname;
         u.Email = data.Email;
         u.Password = data.Password;
         u.Phone = data.Phone;
         u.Address = data.Address;
+        u.Role = "user";
         _db.Add(u);
         _db.SaveChanges();
-         return RedirectToAction("UserList", "Home");
+         return RedirectToAction("UserList");
     }
 
     public IActionResult UserList()
@@ -61,7 +62,23 @@ public class ProjectController : Controller
 
         public IActionResult AddUser()
         {
-            return View(new ProjectUserViewModel());
+            return View();
         }
+        [HttpPost]  
+    public IActionResult AddUser(ProjectUserViewModel data)
+    {
+        var u = new User();
+        u.UserId = data.UserId;
+        u.UserName = data.UserName;
+        u.Fullname = data.Fullname;
+        u.Email = data.Email;
+        u.Password = data.Password;
+        u.Phone = data.Phone;
+        u.Address = data.Address;
+        u.Role = data.Role;
+        _db.Add(u);
+        _db.SaveChanges();
+         return RedirectToAction("UserList");
+    }
 }
     

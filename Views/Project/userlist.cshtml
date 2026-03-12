@@ -22,23 +22,23 @@
                             <thead>
                                 <tr>
                                     <th>Username</th>
-                                    <th>Name</th>
-                                    <th>Lastname</th>
-                                    <th>Age</th>
-                                    <th>Tel</th>
+                                    <th>Fullname</th>
                                     <th>Email</th>
+                                    <th>Tel</th>
+                                    <th>Address</th>   
+                                    <th>Role</th> 
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach (var u in Model)
                                 {
                                     <tr>
-                                        <td>@u.UserId</td>
-                                        <td>@u.Name</td>
-                                        <td>@u.Lastname</td>
+                                        <td>@u.UserName</td>
+                                        <td>@u.Fullname</td>
                                         <td>@u.Email</td>
                                         <td>@u.Phone</td>
                                         <td>@u.Address</td>
+                                        <td>@u.Role</td>
                                     </tr>
                                 }
                             </tbody>

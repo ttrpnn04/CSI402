@@ -157,6 +157,10 @@ public partial class Csi402dbContext : DbContext
             entity.HasIndex(e => e.Email, "UQ__users__AB6E6164D196B81D").IsUnique();
 
             entity.Property(e => e.UserId).HasColumnName("user_id");
+            entity.Property(e => e.UserName)
+                .HasMaxLength(50)
+                .IsUnicode(false)
+                .HasColumnName("username");
             entity.Property(e => e.Address)
                 .IsUnicode(false)
                 .HasColumnName("address");
@@ -168,8 +172,8 @@ public partial class Csi402dbContext : DbContext
                 .HasMaxLength(100)
                 .IsUnicode(false)
                 .HasColumnName("email");
-            entity.Property(e => e.FullName)
-                .HasMaxLength(100)
+            entity.Property(e => e.Fullname)
+                .HasMaxLength(150)
                 .IsUnicode(false)
                 .HasColumnName("full_name");
             entity.Property(e => e.Password)

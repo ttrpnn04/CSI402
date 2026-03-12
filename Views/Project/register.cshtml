@@ -15,17 +15,13 @@
                         <div class="row">
                             <div class="col-12 mb-3">
                                 <label for="username" class="form-label">ชื่อผู้ใช้</label>
-                                <input type="text" class="form-control" asp-for="UserId" placeholder="กรอกชื่อผู้ใช้">
+                                <input type="text" class="form-control" asp-for="UserName" placeholder="กรอกชื่อผู้ใช้">
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-12 col-md-6 mb-3">
-                                <label for="name" class="form-label">ชื่อ</label>
-                                <input type="text" class="form-control" asp-for="Name">
-                            </div>
-                            <div class="col-12 col-md-6 mb-3">
-                                <label for="lastname" class="form-label">นามสกุล</label>
-                                <input type="text" class="form-control" asp-for="Lastname">
+                                <label for="fullname" class="form-label">ชื่อ-นามสกุล</label>
+                                <input type="text" class="form-control" asp-for="Fullname">
                             </div>
                         </div>
 
@@ -49,11 +45,6 @@
                         <div class="mb-3">
                             <label for="password" class="form-label">รหัสผ่าน</label>
                             <input type="password" class="form-control" asp-for="Password">
-                        </div>
-
-                        <div class="mb-4">
-                            <label for="confirmPassword" class="form-label">ยืนยันรหัสผ่าน</label>
-                            <input type="password" class="form-control" asp-for="ConfirmPassword">
                         </div>
 
                         <div class="d-grid">

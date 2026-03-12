@@ -9,40 +9,40 @@
                     <h2 class="mb-0">เพิ่มผู้ใช้ใหม่</h2>
                 </div>
                 <div class="card-body">
-                    <form method="post">
+                    <form asp-for="User" asp-controller="Project" asp-action="AddUser" method="post">
                         <div class="row">
+                            <div class="col-12 mb-3">
+                                <label for="username" class="form-label">ชื่อผู้ใช้</label>
+                                <input type="text" class="form-control" asp-for="UserName" placeholder="กรอกชื่อผู้ใช้">
                             <div class="col-12 col-md-6 mb-3">
-                                <label for="name" class="form-label">ชื่อ</label>
-                                <input type="text" class="form-control" id="name" name="Name">
-                            </div>
-                            <div class="col-12 col-md-6 mb-3">
-                                <label for="lastname" class="form-label">นามสกุล</label>
-                                <input type="text" class="form-control" id="lastname" name="Lastname">
+                                <label for="fullname" class="form-label">ชื่อ-นามสกุล</label>
+                                <input type="text" class="form-control" asp-for="Fullname">
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-6 mb-3">
                                 <label for="tel" class="form-label">โทรศัพท์</label>
-                                <input type="tel" class="form-control" id="tel" name="Tel" placeholder="08x-xxx-xxxx">
+                                <input type="tel" class="form-control" asp-for="Phone" placeholder="08x-xxx-xxxx">
                             </div>
                         </div>
                         <div><label for="email" class="form-label">อีเมล</label>
-                            <input type="email" class="form-control" id="email" name="Email">
+                            <input type="email" class="form-control" asp-for="Email">
                         </div>
                         <div><label for="password" class="form-label">รหัสผ่าน</label>
-                            <input type="password" class="form-control" id="password" name="Password">
+                            <input type="password" class="form-control" id="password" asp-for="Password">
                         </div>
                         <div><label for="address" class="form-label">ที่อยู่</label>
-                            <input type="text" class="form-control" id="address" name="Address">
+                            <input type="text" class="form-control" id="address" asp-for="Address">
                         </div>
                         <div><label for="role" class="form-label">บทบาท</label>
-                            <select class="form-select" id="role" name="Role">
-                                <option value="User">User</option>
-                                <option value="Admin">Admin</option>
+                            <select class="form-select" id="role" asp-for="Role">
+                                <option value="user">User</option>
+                                <option value="admin">Admin</option>
                             </select>
+                        </div>
                         <div class="d-flex justify-content-end mt-4">
                             <a asp-controller="Project" asp-action="UserList" class="btn btn-secondary me-2">ยกเลิก</a>
-                            <button type="submit" class="btn btn-primary"><a asp-controller="Project" asp-action="Userlist" style="color: aliceblue; text-decoration: none;">เพิ่มผู้ใช้</a></button>
+                            <button type="submit" class="btn btn-primary">เพิ่มผู้ใช้</button>
                         </div>
                     </form>
                 </div>
