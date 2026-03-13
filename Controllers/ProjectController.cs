@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
 using CSI402.ViewModels;
 using CSI402.Models.Db;
+using CSI402.Models;
+using System.Diagnostics;
 
 namespace CSI402.Controllers;
 
@@ -16,8 +18,8 @@ public class ProjectController : Controller
     
     public IActionResult Index()
     {
-        // ViewBag.LoginUsers = LoginUsers;
-        // ViewBag.RegisterUsers = RegisterUsers;
+        ViewBag.LoginUsers = new List<object>();
+        ViewBag.RegisterUsers = new List<object>();
         return View();
     }
 
@@ -27,11 +29,19 @@ public class ProjectController : Controller
     }
 
     [HttpPost]
-
     public IActionResult Login(ProjectUserViewModel model)
     {
-
-        return RedirectToAction("Index");
+        var user = _db.Users.FirstOrDefault(u => (u.UserName == model.UserName || u.Email == model.UserName) && u.Password == model.Password);
+        if (user != null)
+        {
+            HttpContext.Session.SetString("User", user.UserName);
+            return RedirectToAction("UserList");
+        }
+        else
+        {
+            ModelState.AddModelError("", "Invalid username/email or password");
+            return View(model);
+        }
     }
 
     public IActionResult Register()
@@ -122,6 +132,18 @@ public class ProjectController : Controller
         _db.SaveChanges();
         
         return RedirectToAction("UserList");
+    }
+
+    public IActionResult Logout()
+    {
+        HttpContext.Session.Remove("User");
+        return RedirectToAction("Index", "Project");
+    }
+
+    [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+    public IActionResult Error()
+    {
+        return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
     }
 }
     

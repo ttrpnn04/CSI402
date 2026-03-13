@@ -63,20 +63,25 @@ public class HomeController : Controller
     public IActionResult Lab10(Lab9Users data)
     {
         var user = (from u in _db.LabStudents where u.StdId == data.UserId select u).FirstOrDefault();
+        if (user != null)
+        {
+            user.StdName = data.Name;
+            user.StdLastname = data.Lastname;
+            user.StdPassword = data.Password;
 
-        user.StdName = data.Name;
-        user.StdLastname = data.Lastname;
-        user.StdPassword = data.Password;
-
-        _db.Update(user);
-        _db.SaveChanges();
+            _db.Update(user);
+            _db.SaveChanges();
+        }
         return RedirectToAction("Lab9List");
     }
     public IActionResult Lab10D(string UID)
     {
         var user = (from u in _db.LabStudents where u.StdId == UID select u).FirstOrDefault();
-        _db.Remove(user);
-        _db.SaveChanges();
+        if (user != null)
+        {
+            _db.Remove(user);
+            _db.SaveChanges();
+        }
 
         return RedirectToAction("Lab9List");
     }

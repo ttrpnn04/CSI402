@@ -48,16 +48,22 @@
 
                     <ul class="navbar-nav align-items-center">
                         <li class="nav-item me-2"><a class="nav-link" asp-controller="Cart" asp-action="Index">🛒</a></li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="accountMenu" role="button" data-bs-toggle="dropdown" aria-expanded="false">บัญชี</a>
-                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="accountMenu">
-                                <li><a class="dropdown-item" asp-controller="Account" asp-action="Profile">บัญชีของฉัน</a></li>
-                                <li><a class="dropdown-item" asp-controller="Orders" asp-action="Index">คำสั่งซื้อ</a></li>
-                                <li><hr class="dropdown-divider"/></li>
-                                <li><a class="dropdown-item" asp-controller="Account" asp-action="Logout">ออกจากระบบ</a></li>
-                            </ul>
-                        </li>
-                        <li class="nav-item"><a class="btn btn-auth btn-auth-success" asp-controller="Project" asp-action="Login">เข้าสู่ระบบ</a></li>
+                        @if (Context.Session.GetString("User") != null)
+                        {
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="accountMenu" role="button" data-bs-toggle="dropdown" aria-expanded="false">บัญชี</a>
+                                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="accountMenu">
+                                    <li><a class="dropdown-item" asp-controller="Account" asp-action="Profile">บัญชีของฉัน</a></li>
+                                    <li><a class="dropdown-item" asp-controller="Orders" asp-action="Index">คำสั่งซื้อ</a></li>
+                                    <li><hr class="dropdown-divider"/></li>
+                                    <li><a class="dropdown-item" asp-controller="Project" asp-action="Logout">ออกจากระบบ</a></li>
+                                </ul>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item"><a class="btn btn-auth btn-auth-success" asp-controller="Project" asp-action="Login">เข้าสู่ระบบ</a></li>
+                        }
                         @* <li class="nav-item"><a class="btn btn-auth btn-auth-primary" asp-controller="Project" asp-action="Register">สมัครสมาชิก</a></li> *@
                     </ul>
                 </div>
