@@ -1,5 +1,5 @@
 @{ Layout = "_UserLayout"; }
-@using CSI402.Models.Db>
+@using CSI402.Models.Db
 @model IEnumerable<User>
 
 <div class="container py-4">
@@ -27,6 +27,7 @@
                                     <th>Tel</th>
                                     <th>Address</th>   
                                     <th>Role</th> 
+                                    <th></th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -39,6 +40,8 @@
                                         <td>@u.Phone</td>
                                         <td>@u.Address</td>
                                         <td>@u.Role</td>
+                                        <td><a asp-route-UID="@u.UserId" asp-action="EditUser" asp-controller="Project" class="btn btn-sm btn-primary">Edit</a>
+                                        <a onclick="return confirm('คุณแน่ใจหรือไม่ว่าต้องการลบผู้ใช้นี้?');" asp-route-UID="@u.UserId" asp-action="DeleteUser" asp-controller="Project" class="btn btn-sm btn-danger">Delete</a></td>
                                     </tr>
                                 }
                             </tbody>

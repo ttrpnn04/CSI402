@@ -1,0 +1,54 @@
+@{Layout = "_UserLayout";}
+@model CSI402.ViewModels.ProjectUserViewModel
+
+<div class="container py-4">
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-8 col-lg-6">
+            <div class="card shadow-sm">
+                <div class="card-header bg-primary text-white text-center mb-3">
+                    <h2 class="mb-0">แก้ไขผู้ใช้</h2>
+                </div>
+                <div class="card-body">
+                    <form asp-for="EditUser" asp-controller="Project" method="post">
+                        <input type="hidden" asp-for="UserId" />
+                        <div class="row">
+                            <div class="col-12 mb-3">
+                                <label for="username" class="form-label">ชื่อผู้ใช้</label>
+                                <input type="text" class="form-control" asp-for="UserName" placeholder="กรอกชื่อผู้ใช้" readonly>
+                            </div>
+                            <div class="col-12 col-md-6 mb-3">
+                                <label for="fullname" class="form-label">ชื่อ-นามสกุล</label>
+                                <input type="text" class="form-control" asp-for="Fullname">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6 mb-3">
+                                <label for="tel" class="form-label">โทรศัพท์</label>
+                                <input type="tel" class="form-control" asp-for="Phone" placeholder="08x-xxx-xxxx">
+                            </div>
+                        </div>
+                        <div><label for="email" class="form-label">อีเมล</label>
+                            <input type="email" class="form-control" asp-for="Email">
+                        </div>
+                        <div><label for="password" class="form-label">รหัสผ่าน</label>
+                            <input type="text" class="form-control" id="password" asp-for="Password">
+                        </div>
+                        <div><label for="address" class="form-label">ที่อยู่</label>
+                            <input type="text" class="form-control" id="address" asp-for="Address">
+                        </div>
+                        <div><label for="role" class="form-label">บทบาท</label>
+                            <select class="form-select" id="role" asp-for="Role">
+                                <option value="user">User</option>
+                                <option value="admin">Admin</option>
+                            </select>
+                        </div>
+                        <div class="d-flex justify-content-end mt-4">
+                            <button asp-controller="Project" asp-action="UserList" class="btn btn-secondary me-2">ยกเลิก</button>
+                            <button type="submit" class="btn btn-primary">บันทึก</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -48,6 +48,38 @@ public class HomeController : Controller
         var user = (from u in _db.LabStudents select u).ToList();
         return View(user);
     }
+    public IActionResult Lab10(string UID)
+    {
+        var check = (from us in _db.LabStudents where us.StdId == UID select new Lab9Users
+        {
+            UserId = us.StdId,
+            Name = us.StdName,
+            Lastname = us.StdLastname,
+            Password = us.StdPassword
+        }).FirstOrDefault();
+        return View(check);
+    }
+    [HttpPost]
+    public IActionResult Lab10(Lab9Users data)
+    {
+        var user = (from u in _db.LabStudents where u.StdId == data.UserId select u).FirstOrDefault();
+
+        user.StdName = data.Name;
+        user.StdLastname = data.Lastname;
+        user.StdPassword = data.Password;
+
+        _db.Update(user);
+        _db.SaveChanges();
+        return RedirectToAction("Lab9List");
+    }
+    public IActionResult Lab10D(string UID)
+    {
+        var user = (from u in _db.LabStudents where u.StdId == UID select u).FirstOrDefault();
+        _db.Remove(user);
+        _db.SaveChanges();
+
+        return RedirectToAction("Lab9List");
+    }
 
     public IActionResult Privacy()
     {

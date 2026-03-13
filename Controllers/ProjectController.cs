@@ -12,6 +12,8 @@ public class ProjectController : Controller
     {
         _db = db;
     }
+        
+    
     public IActionResult Index()
     {
         // ViewBag.LoginUsers = LoginUsers;
@@ -79,6 +81,47 @@ public class ProjectController : Controller
         _db.Add(u);
         _db.SaveChanges();
          return RedirectToAction("UserList");
+    }
+    public IActionResult EditUser(int UID)
+    {
+        var check = (from us in _db.Users where us.UserId == UID select new ProjectUserViewModel
+        {
+            UserId = us.UserId,
+            UserName = us.UserName,
+            Fullname = us.Fullname,
+            Email = us.Email,
+            Password = us.Password,
+            Phone = us.Phone,
+            Address = us.Address,
+            Role = us.Role
+        }).FirstOrDefault();
+         return View(check);
+    }
+    [HttpPost]
+    public IActionResult EditUser(ProjectUserViewModel data)
+    {
+        var user = (from u in _db.Users where u.UserId == data.UserId select u).FirstOrDefault();
+        
+        user.UserName = data.UserName;
+        user.Fullname = data.Fullname;
+        user.Email = data.Email;
+        user.Password = data.Password;
+        user.Phone = data.Phone;
+        user.Address = data.Address;
+        user.Role = data.Role;
+
+        _db.Update(user);
+        _db.SaveChanges();
+        
+        return RedirectToAction("UserList");
+    }
+    public IActionResult DeleteUser(int UID)
+    {
+        var user = (from u in _db.Users where u.UserId == UID select u).FirstOrDefault();
+        _db.Remove(user);
+        _db.SaveChanges();
+        
+        return RedirectToAction("UserList");
     }
 }
     
